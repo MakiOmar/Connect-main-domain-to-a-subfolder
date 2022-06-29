@@ -1,0 +1,27 @@
+# .htaccess main domain to chorome redirect
+# Copy and paste the following code into the .htaccess file
+# in the public_html folder of your hosting account
+# make the changes to the file according to the instructions.
+  
+# Do not change this line.
+RewriteEngine on
+  
+# Change yourdomain.com to be your main domain.
+RewriteCond %{HTTP_HOST} ^(www.)?chorome-sa.com$
+  
+# Change 'chorome' to be the folder you will use for your main domain.
+RewriteCond %{REQUEST_URI} !^/chorome/
+  
+# Don't change this line.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+  
+# Change 'chorome' to be the folder you will use for your main domain.
+RewriteRule ^(.*)$ /chorome/$1
+  
+# Change yourdomain.com to be your main domain again.
+# Change 'chorome' to be the folder you will use for your main domain
+# followed by / then the main file for your site, index.php, index.html, etc.
+  
+RewriteCond %{HTTP_HOST} ^(www.)?chorome-sa.com$
+RewriteRule ^(/)?$ chorome/index.php [L]
